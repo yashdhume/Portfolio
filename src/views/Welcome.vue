@@ -16,7 +16,59 @@
             </v-parallax>
         </section>
 
+        <section>
+            <v-container fluid>
+                <v-layout column>
+                    <v-card>
 
+                    </v-card>
+                </v-layout>
+            </v-container>
+        </section>
+        <section>
+            <v-container fluid>
+            <v-timeline align-top>
+                <v-timeline-item
+                        v-for="(item, i) in schools"
+                        :key="i"
+                        :school="item.school"
+                        :color="item.color"
+                        :picture="item.picture"
+                        :text="item.text"
+                        fill-dot
+
+                >
+                    <template v-slot:icon>
+                        <v-avatar>
+                            <img v-bind:src="item.picture">
+                        </v-avatar>
+                    </template>
+                    <template v-slot:opposite>
+                    <span
+
+                            :class="`headline font-weight-bold ${item.color}--text`"
+                        v-text="item.year"
+                            top
+                     ></span>
+                    </template>
+                    <v-hover>
+                        <v-card
+                                slot-scope="{ hover }"
+                                :class="`elevation-${hover ? 12 : 2}`"
+                                :color=item.color
+                                dark
+
+                        >
+                            <v-card-title class="title">{{item.school}}</v-card-title>
+                            <v-card-text class="white text--primary">
+                                <p>{{item.text}}</p>
+                            </v-card-text>
+                        </v-card>
+                    </v-hover>
+                </v-timeline-item>
+            </v-timeline>
+            </v-container>
+        </section>
 
     </div>
 </template>
