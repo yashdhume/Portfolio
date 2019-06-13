@@ -17,11 +17,48 @@
         </section>
 
         <section>
-            <v-container fluid>
+            <v-container fluid
+                         justify-space-between>
                 <v-layout column>
                     <v-card>
-
+                        <v-layout row
+                                  justify-space-around
+                                  align-center
+                        >
+                            <v-flex xs7
+                                    align-center
+                                    justify-center
+                                    layout
+                                    text-xs-straight>
+                                <v-card-title primary-title  class="justify-center">
+                                    <div>
+                                        <div class="headline">About Me</div>
+                                        <div class="body-1">
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        </div>
+                                    </div>
+                                </v-card-title>
+                            </v-flex>
+                            <v-flex
+                                    xs3
+                                    align-right
+                                    layouts
+                            >
+                                <v-hover>
+                                    <v-img
+                                            size="80px"
+                                            slot-scope="{hover}"
+                                            class="mx-auto"
+                                            :style="changePicBorRad(hover)"
+                                            src="https://pbs.twimg.com/profile_images/3649535578/c2cd125113ddc58b89c2893cac2408c2_400x400.jpeg"
+                                    >
+                                    </v-img>
+                                </v-hover>
+                                <div class="fill-height bottom-gradient"></div>
+                            </v-flex>
+                        </v-layout>
                     </v-card>
+
                 </v-layout>
             </v-container>
         </section>
@@ -93,8 +130,17 @@
                     text: ""
                 },
 
-            ]
+            ],
+            picBorRad: "border-radius:100px"
         }),
-        components: {}
+        components: {},
+        methods:{
+            changePicBorRad(hover){
+                if(hover==true){
+                    return "border-radius:40px"
+                }
+                else return "border-radius:80px"
+            }
+        }
     }
 </script>
