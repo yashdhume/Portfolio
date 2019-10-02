@@ -51,7 +51,14 @@
                                 <v-btn x-large dark icon>
                                     <v-tooltip bottom>
                                         <template v-slot:activator="{ on }">
-                                            <v-icon x-large v-on="on" :color=changeColor(hover)>{{i.icon}}</v-icon>
+                                            <BreadcrumbItem>
+                                                <a :href="i.link">
+                                                    <v-icon x-large v-on="on"
+                                                            :color=changeColor(hover)>
+                                                        {{i.icon}}
+                                                    </v-icon>
+                                                </a>
+                                            </BreadcrumbItem>
                                         </template>
                                         <span>{{i.title}}</span></v-tooltip>
                                 </v-btn>
@@ -82,14 +89,17 @@
                                     text-xs-straight>
                                 <v-card-title primary-title class="justify-center">
                                     <div>
-                                        <div class="headline">About Me</div>
-                                        <div class="body-1">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        <div class="display-2">About Me</div>
+                                        <div class="headline">
+                                            Hi, my name is Yash Dhume and welcome to my website. I am a third-year
+                                            computer science undergrad at Ontario Tech University. I have a deep passion
+                                            in cutting edge technology and that excitement pushes me to learn new and
+                                            innovative things. You can find me doing projects using technologies like
+                                            flutter down below. Additionally, I enjoy thrill seeking adventures like
+                                            rock climbing, skydiving, scuba diving. I hope you enjoy browsing my work.
+                                        </div>
+                                        <div class="caption">
+                                            *Note* This website was created by me using Vue.Js and Firebase
                                         </div>
                                     </div>
                                 </v-card-title>
@@ -101,16 +111,16 @@
                             >
                                 <v-hover>
                                     <v-img
-                                            size="80px"
                                             slot-scope="{hover}"
-                                            class="mx-auto"
+                                            class="mx-auto ml-auto ma-auto"
                                             :style="changePicBorRad(hover)"
-                                            src="https://pbs.twimg.com/profile_images/3649535578/c2cd125113ddc58b89c2893cac2408c2_400x400.jpeg"
+                                            src="https://scontent-yyz1-1.xx.fbcdn.net/v/t1.0-9/66502408_10219485458277336_4006906446502428672_o.jpg?_nc_cat=110&_nc_oc=AQlkC6puTJhTLXTP2HBIbOWuOUHQysts8-pcjljn-dJgUOwW08uVtxRlKLQ0OMpT-yE&_nc_ht=scontent-yyz1-1.xx&oh=95c6ecc8de0b0a157bd5ad662c40feb7&oe=5DF1C1F5"
                                     >
                                     </v-img>
                                 </v-hover>
                                 <div class="fill-height bottom-gradient"></div>
                             </v-flex>
+
                         </v-layout>
                     </v-card>
 
@@ -118,38 +128,131 @@
             </v-container>
         </section>
         <section>
-            <v-container fluid class="mx-auto">
-                <v-layout
-                        row flex
-                        align-center
-                        justify-center
-                >
-                    <v-flex xs12 sm6 md4 lg3 v-for="i in projects" :key="i.title">
-                        <v-card class="text-xs-center ma-3" hover>
-                            <v-responsive class="pt-4">
-                                <v-avatar size="100" class="grey lighten-2 v-image__image--contain">
-                                    <img :src="i.photo">
-                                </v-avatar>
-                            </v-responsive>
-                            <v-card-text>
-                                <div class="subheading">{{ i.title }}</div>
-                                <div class="grey--text">{{ i.description }}</div>
-                            </v-card-text>
-                        </v-card>
-                    </v-flex>
-                </v-layout>
+            <v-hover>
+                <v-card slot-scope="{hover}" max-width="250px" elevation="0" class="transparent">
+                    <v-container fluid>
+                        <v-row
+                                class="align-start"
+                        >
+                            <v-col
+                                    class="display-2 text-center"
+                                    cols="12"
+                            >
+                                Projects
+                            </v-col>
+                            <v-col>
+
+                                <v-progress-linear
+                                        color="#1d47e0"
+                                        :indeterminate="hover ?true: false"
+                                        height="6"
+                                        class="rounded"
+                                ></v-progress-linear>
+
+                            </v-col>
+                        </v-row>
+
+                    </v-container>
+                </v-card>
+            </v-hover>
+
+            <v-container fluid>
+                <v-row>
+                    <v-col cols="12">
+                        <v-row
+                                align="center"
+                                justify="center"
+                        >
+                            <v-card v-for="i in projects" :key="i.title" class="text-xs-center ma-3 pa-6" tile hover>
+                                <v-responsive class="pt-4">
+                                    <v-avatar size="150" tile class="white v-image__image--contain">
+                                        <v-img :src="i.photo" contain></v-img>
+                                    </v-avatar>
+                                </v-responsive>
+                                <v-card-text>
+                                    <div class="subheading">{{ i.title }}</div>
+                                    <div class="grey--text">{{ i.description }}</div>
+                                </v-card-text>
+                            </v-card>
+                        </v-row>
+                    </v-col>
+                </v-row>
 
             </v-container>
+
         </section>
         <section>
+            <v-flex
+                    class="d-flex justify-space-between mb-6"
+            >
+                <v-hover>
+                    <v-card slot-scope="{hover}" max-width="250px" elevation="0" class="transparent"
+                            style="float: left">
+                        <v-container fluid>
+                            <v-row
+                                    class="align-start"
+                            >
+                                <v-col
+                                        class="display-2 text-center"
+                                        cols="12"
+                                >
+                                    Work Experience
+                                </v-col>
+                                <v-col>
+
+                                    <v-progress-linear
+                                            color="#1d47e0"
+                                            :indeterminate="hover ?true: false"
+                                            height="6"
+                                            class="rounded"
+                                    ></v-progress-linear>
+
+                                </v-col>
+                            </v-row>
+                        </v-container>
+                    </v-card>
+                </v-hover>
+                <v-hover>
+                    <v-card slot-scope="{hover}" max-width="250px" elevation="0"
+                            class="transparent"
+                            style="float: right"
+                    >
+                        <v-container>
+                            <v-row
+                                    class="align-content-end"
+                            >
+                                <v-col
+                                        class="display-2 text-center"
+                                        cols="12"
+                                >
+                                    Education
+                                </v-col>
+                                <v-col>
+
+                                    <v-progress-linear
+                                            color="#1d47e0"
+                                            :indeterminate="hover ?true: false"
+                                            height="6"
+                                            class="rounded"
+                                    ></v-progress-linear>
+
+                                </v-col>
+                            </v-row>
+
+                        </v-container>
+                    </v-card>
+
+                </v-hover>
+            </v-flex>
+
             <v-container fluid>
                 <v-timeline align-top>
                     <v-timeline-item
-                            v-for="(item, i) in schools"  :key="i"
+                            v-for="(item, i) in schools" :key="i"
                             fill-dot
                     >
                         <template v-slot:icon>
-                            <v-avatar  >
+                            <v-avatar>
                                 <img v-bind:src="item.picture">
                             </v-avatar>
                         </template>
@@ -188,17 +291,17 @@
     export default {
 
         data: () => ({
-            carousel: ['Computer Science Student', 'Lifeguard', 'Teaching Assistant', 'Flutter', 'Java', 'C++', 'Mobile Development', 'Python', 'Vue.js', 'Firebase', 'Dart'],
+            carousel: ['Computer Science Student', 'Deck Supervisor', 'Lifeguard', 'Swim/Lifesaving Instructor', 'Teaching Assistant', 'Flutter', 'Java', 'C++', 'Mobile Development', 'Python', 'Vue.js', 'Firebase', 'Dart', 'Rock Climbing', 'Scuba Diving', 'Skydiving'],
             socialLinks: [
                 {
                     title: "Github",
                     icon: "fab fa-github",
-                    link: "www.github.com/yashdhume"
+                    link: "http://www.github.com/yashdhume"
                 },
                 {
                     title: "Email",
                     icon: "fas fa-envelope",
-                    link: "www.github.com/yashdhume"
+                    link: "mailto:yash.dhume@gmail.com"
                 }
             ],
             projects: [],
@@ -209,8 +312,12 @@
 
         components: {},
         methods: {
+            getTimeOfDay() {
+                var date = new Date();
+                var time = date.getHours();
+            },
             changeColor(hover) {
-                return hover ? "red" : ""
+                return hover ? "red" : "white"
             },
 
             changePicBorRad(hover) {
