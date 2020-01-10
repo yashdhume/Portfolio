@@ -4,7 +4,7 @@
             <v-parallax
                     dark
                     height="1000"
-                    src="https://i.pinimg.com/originals/a3/c5/51/a3c551e479885ccdbe04d4f31b1f425e.jpg"
+                    :src="pictures[0]['mainParallax']"
                     jumbotron
             >
 
@@ -13,26 +13,25 @@
                         align-center
                         column
                 >
-                    <p class="display-4  text-sm-center">Yash Dhume</p>
+                    <p class="display-4  text-center">Yash Dhume</p>
 
                     <v-carousel
+                            align="center"
                             class="elevation-0"
                             cycle
                             interval="2000"
-                            hide-controls
                             hide-delimiters
                             hide-delimiter-background
+                            :show-arrows=false
                             elevation="0"
                             touchless
-                            progress
                             vertical
                             height="auto"
                             dark
-                            continous
                     >
                         <v-carousel-item
                                 cycle
-                                v-for="(item, i) in carousel"
+                                v-for="(item, i) in carousel[0]['carousel']"
                                 :key="i"
                         >
                             <v-row
@@ -51,14 +50,12 @@
                                 <v-btn x-large dark icon>
                                     <v-tooltip bottom>
                                         <template v-slot:activator="{ on }">
-                                            <BreadcrumbItem>
-                                                <a :href="i.link">
-                                                    <v-icon x-large v-on="on"
-                                                            :color=changeColor(hover)>
-                                                        {{i.icon}}
-                                                    </v-icon>
-                                                </a>
-                                            </BreadcrumbItem>
+                                            <a :href="i.link" style="text-decoration:none">
+                                                <v-icon x-large v-on="on"
+                                                        :color=changeColor(hover)>
+                                                    {{i.icon}}
+                                                </v-icon>
+                                            </a>
                                         </template>
                                         <span>{{i.title}}</span></v-tooltip>
                                 </v-btn>
@@ -90,14 +87,21 @@
                                 <v-card-title primary-title class="justify-center">
                                     <div>
                                         <div class="display-2">About Me</div>
-                                        <div class="headline">
-                                            Hi, my name is Yash Dhume and welcome to my website. I am a third-year
-                                            computer science undergrad at Ontario Tech University. I have a deep passion
-                                            in cutting edge technology and that excitement pushes me to learn new and
-                                            innovative things. You can find me doing projects using technologies like
-                                            flutter down below. Additionally, I enjoy thrill seeking adventures like
-                                            rock climbing, skydiving, scuba diving. I hope you enjoy browsing my work.
-                                        </div>
+                                            <v-hover>
+                                                <v-img
+                                                        max-width="200"
+                                                        v-if="$vuetify.breakpoint.mdAndDown"
+                                                        slot-scope="{hover}"
+                                                        class="mx-auto ml-auto ma-auto"
+                                                        :style="changePicBorRad(hover)"
+                                                        :src="pictures[0]['profilePicture']"
+                                                >
+                                                </v-img>
+                                            </v-hover>
+                                            <div class="fill-height bottom-gradient"></div>
+                                        <p class="text-justify al">
+                                            {{getTimeOfDay()}} {{aboutMe[0]['aboutMe']}}
+                                        </p>
                                         <div class="caption">
                                             *Note* This website was created by me using Vue.Js and Firebase
                                         </div>
@@ -111,11 +115,12 @@
                             >
                                 <v-hover>
                                     <v-img
+                                            v-if="$vuetify.breakpoint.mdAndUp"
                                             slot-scope="{hover}"
                                             class="mx-auto ml-auto ma-auto"
                                             :style="changePicBorRad(hover)"
-                                            src="https://scontent-yyz1-1.xx.fbcdn.net/v/t1.0-9/66502408_10219485458277336_4006906446502428672_o.jpg?_nc_cat=110&_nc_oc=AQlkC6puTJhTLXTP2HBIbOWuOUHQysts8-pcjljn-dJgUOwW08uVtxRlKLQ0OMpT-yE&_nc_ht=scontent-yyz1-1.xx&oh=95c6ecc8de0b0a157bd5ad662c40feb7&oe=5DF1C1F5"
-                                    >
+                                            src="https://scontent.fybz2-1.fna.fbcdn.net/v/t1.0-9/66499412_10219485457957328_7402480785829134336_o.jpg?_nc_cat=108&_nc_oc=AQnmaxSUg3CZO3RJ52KJQj4JAJJhoBEPRcxmmvISaUYJywE8i3yMATsDWddiGRcP2PA&_nc_ht=scontent.fybz2-1.fna&oh=8a4e0f49fd54930c17b684d9beaea17d&oe=5E83FFFD"
+                                    >j
                                     </v-img>
                                 </v-hover>
                                 <div class="fill-height bottom-gradient"></div>
@@ -155,7 +160,6 @@
                     </v-container>
                 </v-card>
             </v-hover>
-
             <v-container fluid>
                 <v-row>
                     <v-col cols="12">
@@ -163,48 +167,48 @@
                                 align="center"
                                 justify="center"
                         >
-                            <v-card v-for="i in projects" :key="i.title" class="text-xs-center ma-3 pa-6" tile hover>
-                                <v-responsive class="pt-4">
-                                    <v-avatar size="150" tile class="white v-image__image--contain">
-                                        <v-img :src="i.photo" contain></v-img>
-                                    </v-avatar>
-                                </v-responsive>
+                            <v-card align="center" v-for="i in projects" :key="i.title"
+                                    class="text-center align-center justify-center  ma-4 pa-6 center" height="450"
+                                    max-width="350" hover>
+                                <a style="text-decoration:none" :href="i.link">
+                                <v-avatar size="150" tile class="">
+                                    <v-img :src="i.photo" contain></v-img>
+                                </v-avatar>
                                 <v-card-text>
                                     <div class="subheading">{{ i.title }}</div>
                                     <div class="grey--text">{{ i.description }}</div>
                                 </v-card-text>
+                                </a>
                             </v-card>
                         </v-row>
+
                     </v-col>
                 </v-row>
-
             </v-container>
-
         </section>
         <section>
             <v-flex
-                    class="d-flex justify-space-between mb-6"
+                    class="d-flex justify-space-between "
             >
                 <v-hover>
-                    <v-card slot-scope="{hover}" max-width="250px" elevation="0" class="transparent"
-                            style="float: left">
+                    <v-card slot-scope="{hover}" max-width="200px" elevation="0" class="transparent"
+                    >
                         <v-container fluid>
                             <v-row
-                                    class="align-start"
+
                             >
                                 <v-col
-                                        class="display-2 text-center"
-                                        cols="12"
+                                        class="display-1 text-center"
+
                                 >
-                                    Work Experience
+                                    Education
                                 </v-col>
                                 <v-col>
-
                                     <v-progress-linear
                                             color="#1d47e0"
                                             :indeterminate="hover ?true: false"
                                             height="6"
-                                            class="rounded"
+                                            rounded
                                     ></v-progress-linear>
 
                                 </v-col>
@@ -213,19 +217,19 @@
                     </v-card>
                 </v-hover>
                 <v-hover>
-                    <v-card slot-scope="{hover}" max-width="250px" elevation="0"
+                    <v-card slot-scope="{hover}" max-width="300px" elevation="0"
                             class="transparent"
-                            style="float: right"
+
                     >
                         <v-container>
                             <v-row
                                     class="align-content-end"
                             >
                                 <v-col
-                                        class="display-2 text-center"
+                                        class="display-1 text-center"
                                         cols="12"
                                 >
-                                    Education
+                                    Work Experience
                                 </v-col>
                                 <v-col>
 
@@ -291,19 +295,10 @@
     export default {
 
         data: () => ({
-            carousel: ['Computer Science Student', 'Deck Supervisor', 'Lifeguard', 'Swim/Lifesaving Instructor', 'Teaching Assistant', 'Flutter', 'Java', 'C++', 'Mobile Development', 'Python', 'Vue.js', 'Firebase', 'Dart', 'Rock Climbing', 'Scuba Diving', 'Skydiving'],
-            socialLinks: [
-                {
-                    title: "Github",
-                    icon: "fab fa-github",
-                    link: "http://www.github.com/yashdhume"
-                },
-                {
-                    title: "Email",
-                    icon: "fas fa-envelope",
-                    link: "mailto:yash.dhume@gmail.com"
-                }
-            ],
+            pictures:[],
+            aboutMe: [],
+            carousel: [],
+            socialLinks: [],
             projects: [],
             schools: [],
             windowSize: {x: 0, y: 0},
@@ -312,9 +307,18 @@
 
         components: {},
         methods: {
-            getTimeOfDay() {
+
+            getTimeOfDay: function () {
                 var date = new Date();
-                var time = date.getHours();
+                var hour = date.getHours();
+
+                if (hour < 12)
+                    return "Good Morning!";
+                else if (hour < 18)
+                    return "Good Afternoon!";
+                else
+                    return "Good Evening!";
+
             },
             changeColor(hover) {
                 return hover ? "red" : "white"
@@ -331,6 +335,10 @@
         },
         firestore() {
             return {
+                pictures: db.collection('pictures'),
+                aboutMe: db.collection('aboutMe'),
+                carousel: db.collection('carousel'),
+                socialLinks: db.collection('socialLinks').orderBy('id'),
                 schools: db.collection('schools').orderBy('id'),
                 projects: db.collection('projects').orderBy('id')
             }
