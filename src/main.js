@@ -4,6 +4,7 @@ import vuetify from './plugins/vuetify';
 import router from './router'
 import'./firebase';
 import VueClipboard from 'vue-clipboard2'
+VueClipboard.config.autoSetContainer = true
 Vue.use(VueClipboard)
 Vue.config.productionTip = false
 import { firestorePlugin } from 'vuefire'

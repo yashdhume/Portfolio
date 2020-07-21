@@ -16,7 +16,7 @@ export default new Router({
       component: Welcome
     },
     {
-      path: '/memeText',
+      path: '/meme',
       name: 'memeText',
       component: memeText
     },
