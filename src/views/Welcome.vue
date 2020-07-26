@@ -2,6 +2,8 @@
     <div class="welcome">
         <IntoParallax :carousel="carousel" :pictures="pictures" :social-links="socialLinks"/>
         <AboutMe :about-me="aboutMe" :pictures="pictures"/>
+        <SubTitle title="Technologies"/>
+        <Technologies :technologies="technologies" style="margin: 1rem"/>
         <SubTitle title="Projects"/>
         <Projects :projects="projects"/>
         <v-row class="justify-space-between" style="padding: 1rem">
@@ -19,6 +21,7 @@
     import SubTitle from "../components/miscellaneous/SubTitle";
     import Projects from "../components/Projects/Projects";
     import WorkEducation from "../components/WorkEducation/WorkEducation";
+    import Technologies from "../components/Technologies/Technologies";
 
     export default {
 
@@ -30,11 +33,12 @@
             projects: [],
             schools: [],
             projectLinks: [],
+            technologies: [],
             windowSize: {x: 0, y: 0},
             offsetTop: 0,
         }),
 
-        components: {WorkEducation, Projects, SubTitle, AboutMe, IntoParallax},
+        components: {Technologies, WorkEducation, Projects, SubTitle, AboutMe, IntoParallax},
         methods: {
 
 
@@ -47,7 +51,8 @@
                 socialLinks: db.collection('socialLinks').orderBy('id'),
                 schools: db.collection('schools').orderBy('id'),
                 projects: db.collection('projects').orderBy('id'),
-                projectLinks: db.collection('projectLinks')
+                projectLinks: db.collection('projectLinks'),
+                technologies: db.collection('technologies').orderBy('id')
             }
         },
 
