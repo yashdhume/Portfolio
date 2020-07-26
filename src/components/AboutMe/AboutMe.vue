@@ -1,6 +1,6 @@
 <template>
     <v-card class="mb-auto  ma-6 pa-5">
-        <v-container fill-height fluid>
+        <v-container fluid>
             <v-card-actions  class="justify-center" style="flex-direction: column" v-if="$vuetify.breakpoint.smAndDown">
                 <div class="display-3">About Me</div>
                 <AboutMeProfilePicture  size="xs7" class="justify-center" style="padding: 1rem" :picture="pictures[0]['profilePicture']"/>
