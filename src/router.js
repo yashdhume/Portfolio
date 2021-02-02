@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Welcome from './views/Welcome.vue'
 import memeText from "./views/memeText"
 import please from "./views/please"
-
+import alex from "@/views/alex";
 Vue.use(Router)
 
 export default new Router({
@@ -24,6 +24,11 @@ export default new Router({
       path: '/please',
       name: 'please',
       component: please
+    },
+    {
+      path: '/Alex',
+      name: 'alex',
+      component: alex
     },
 
   ]
