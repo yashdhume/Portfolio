@@ -1,12 +1,13 @@
 <template>
     <div class="welcome">
         <IntoParallax :carousel="carousel" :pictures="pictures" :social-links="socialLinks"/>
+      <vs-row justify="center">
         <AboutMe :about-me="aboutMe" :pictures="pictures"/>
-        <SubTitle title="Technologies"/>
         <Technologies :technologies="technologies" style="margin: 1rem"/>
+      </vs-row>
         <SubTitle title="Projects"/>
         <Projects :projects="projects"/>
-        <v-row class="justify-space-between" style="padding: 1rem">
+        <v-row class="justify-space-around" style="padding: 1rem">
             <SubTitle title="Education"/>
             <SubTitle  title="Work Experience"/>
         </v-row>

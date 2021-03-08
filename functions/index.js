@@ -29,6 +29,6 @@ app.post('/api/addScore', (request, response)=>{
 app.get('/api/setAlex', (request, response)=>{
     admin.firestore().collection('random').doc('Alex').set({
         link: request.query.link
-    }).then(()=>response.send("Image Set"))
+    }).then(()=>response.redirect("https://yashdhume.com/alex"))
 })
 exports.app = functions.https.onRequest(app)

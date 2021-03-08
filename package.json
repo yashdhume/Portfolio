@@ -17,6 +17,7 @@
     "vue-clipboard2": "^0.3.1",
     "vue-router": "^3.3.4",
     "vuefire": "^2.2.3",
+    "vuesax": "^4.0.1-alpha.25",
     "vuetify": "^2.3.5"
   },
   "devDependencies": {

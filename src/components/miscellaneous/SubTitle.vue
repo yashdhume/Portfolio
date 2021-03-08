@@ -6,10 +6,11 @@
                         class="align-start"
                 >
                     <v-col
-                            class="display-1 text-center"
+                            class="text-center"
                             cols="12"
                     >
-                        {{title}}
+                      <h4 v-if="$vuetify.breakpoint.smAndDown">{{title}}</h4>
+                      <h2 v-else>{{title}}</h2>
                     </v-col>
                     <v-col>
 

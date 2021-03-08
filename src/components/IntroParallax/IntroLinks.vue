@@ -1,7 +1,7 @@
 <template>
     <v-column>
         <v-column v-for="i in socialLinks" :key="i.title">
-            <IconsWithTooltip :title="i.title" :icon="i.icon" color="red" :link="i.link" baseColor="white"/>
+            <IconsWithTooltip :title="i.title" :icon="i.icon" :color="i.color" :link="i.link" baseColor="white"/>
         </v-column>
     </v-column>
 </template>

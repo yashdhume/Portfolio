@@ -9,6 +9,9 @@ Vue.use(VueClipboard)
 Vue.config.productionTip = false
 import { firestorePlugin } from 'vuefire'
 Vue.config.productionTip = false
+import Vuesax from 'vuesax'
+import 'vuesax/dist/vuesax.css' //Vuesax styles
+Vue.use(Vuesax, {})
 Vue.use(firestorePlugin)
 new Vue({
   vuetify,

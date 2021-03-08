@@ -1,63 +1,49 @@
 <template>
-    <v-container fluid>
-        <v-row>
-            <v-col cols="12">
-                <v-row
-                        align="center"
-                        class="d-flex justify-center"
-                >
-                    <v-card v-for="i in projects" :key="i.title"
-                            class=" mb-auto text-center  ma-6 pa-5  justify-center" height="500"
-                            max-width="350" hover>
-                        <v-card-img>
-                            <v-avatar size="150" tile class="">
-                                <v-img :src="i.photo" contain></v-img>
-                            </v-avatar>
-                        </v-card-img>
-                        <v-card-text grow>
-                            <div class="subheading grow">{{ i.title }}</div>
-                            <div class="grey--text flex-grow-1">{{ i.description }}</div>
-                        </v-card-text>
-                        <v-layout justify-center>
-                            <v-card-actions class="justify-center" style="position: absolute; bottom: 0;">
-                                <v-col  v-for="(link, j) in i.links" :key="link">
-                                    <v-hover v-slot:default="{ hover }">
-                                        <v-btn class="" icon>
-                                            <v-tooltip bottom>
-                                                <template v-slot:activator="{ on }">
-                                                    <a :href="link" style="text-decoration:none">
-                                                        <v-icon v-on="on"
-                                                                :color=changeColorProject(hover)>
-                                                            {{i.icons[j]}}
-                                                        </v-icon>
-                                                    </a>
-                                                </template>
-                                                <span>{{i.names[j]}}</span></v-tooltip>
-                                        </v-btn>
-                                    </v-hover>
-                                </v-col>
-                            </v-card-actions>
-                        </v-layout>
-                    </v-card>
-                </v-row>
+  <v-container fluid>
+    <vs-row >
+      <vs-col >
+        <vs-row justify="space-around">
+          <vs-card v-for="i in projects" :key="i.title" :type="$vuetify.breakpoint.smAndDown? 1: 5" style="padding: 1rem">
+            <template #title>
+              <h3>{{ i.title }}</h3>
+            </template>
+            <template #img>
+              <img :src="i.photo" alt="" >
+            </template>
+            <template #text>
+              <p>
+                {{ i.description }}
+              </p>
+            </template>
+            <template #interactions>
+                <vs-button  style="min-width: 60px" v-for="link in i.links" :color="link.color" :key="link" :href="link.link" animation-type="rotate" >
+                  <i :class='link.icon'></i>
+                  <template #animate >
+                    {{ link.text }}
+                  </template>
+                </vs-button>
+            </template>
+          </vs-card>
+        </vs-row>
 
-            </v-col>
-        </v-row>
-    </v-container>
+
+      </vs-col>
+    </vs-row>
+  </v-container>
 </template>
 
 <script>
-    export default {
-        name: "Projects",
-        props:{
-            projects: Array,
-        },
-        methods:{
-            changeColorProject(hover) {
-                return hover ? "red" : "grey"
-            },
-        }
-    }
+export default {
+  name: "Projects",
+  props:{
+    projects: Array,
+  },
+  methods:{
+    changeColorProject(hover) {
+      return hover ? "red" : "grey"
+    },
+  }
+}
 </script>
 
 <style scoped>

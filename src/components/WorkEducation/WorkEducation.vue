@@ -1,6 +1,6 @@
 <template>
-    <v-container fluid>
-        <v-timeline align-top>
+  <vs-row justify="center">
+        <v-timeline align-center>
             <v-timeline-item
                     v-for="(item, i) in schools" :key="i"
                     fill-dot
@@ -18,26 +18,23 @@
 
                             :class="`headline font-weight-bold ${item.color}--text`"
                             v-text="item.year"
-                            top
                     ></span>
                 </template>
-                <v-hover>
-                    <v-card
-                            slot-scope="{ hover }"
-                            :class="`elevation-${hover ? 12 : 2}`"
+
+                    <vs-card
+
+
                             :color=item.color
-                            dark
 
                     >
-                        <v-card-title class="title">{{item.school}}</v-card-title>
-                        <v-card-text class="white text--primary">
+                      <template #title><h3>{{item.school}}</h3></template>
+                      <template #text>
                             <p>{{item.text}}</p>
-                        </v-card-text>
-                    </v-card>
-                </v-hover>
+                      </template>
+                    </vs-card>
             </v-timeline-item>
         </v-timeline>
-    </v-container>
+  </vs-row>
 </template>
 
 <script>
