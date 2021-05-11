@@ -4,6 +4,8 @@
             <v-timeline-item
                     v-for="(item, i) in schools" :key="i"
                     fill-dot
+                    :left="!item.isWork"
+                    :right="item.isWork"
             >
                 <template v-slot:icon>
                     <a :href="item.link">
@@ -22,10 +24,7 @@
                 </template>
 
                     <vs-card
-
-
                             :color=item.color
-
                     >
                       <template #title><h3>{{item.school}}</h3></template>
                       <template #text>

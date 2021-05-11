@@ -4,7 +4,7 @@
             {{getTimeOfDay()}} {{aboutMe}}
         </p>
         <div class="caption">
-            *Note* This website was created by me using Vue.Js and Firebase
+            *Note* This website was created using Vue.Js and is dynamically generated using Firebase Cloud Storage
         </div>
     </v-flex>
 </template>
