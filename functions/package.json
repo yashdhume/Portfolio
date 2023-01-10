@@ -15,7 +15,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "file-system": "^2.2.2",
-    "firebase-admin": "^9.2.0",
+    "firebase-admin": "^11.4.1",
     "firebase-functions": "^3.11.0",
     "fs": "0.0.1-security",
     "path": "^0.12.7"
