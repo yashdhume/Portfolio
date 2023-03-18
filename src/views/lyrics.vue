@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     sendData() {
-      axios.post("https://yashdhume.com/api/setLyric", JSON.stringify(this.lyric))
+      axios.post("https://yashdhume.com/api/setLyric",JSON.stringify(this.lyric) )
           .then((response)=> this.openNotification(response.data, 'success'))
       .catch(()=>this.openNotification("Error", 'danger'))
     },

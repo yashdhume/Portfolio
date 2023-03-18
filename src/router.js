@@ -7,6 +7,8 @@ import alex from "@/views/alex";
 import ThreeJsTest from "@/views/ThreeJsTest";
 import test from "@/views/test";
 import lyrics from "@/views/lyrics";
+import price from "@/views/price";
+import Workout from "@/views/Workout";
 Vue.use(Router)
 
 export default new Router({
@@ -54,7 +56,7 @@ export default new Router({
       }
     },
     {
-      path: '/acc',
+      path: '/test',
       name: 'test',
       component: test
     },
@@ -63,6 +65,16 @@ export default new Router({
       name: 'lyrics',
       component: lyrics
     },
+    {
+      path: '/price',
+      name: 'price',
+      component: price
+    },
+    {
+      path: '/workout',
+      name: 'Workout',
+      component: Workout
+    }
 
   ]
 })
