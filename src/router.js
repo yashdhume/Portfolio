@@ -4,7 +4,6 @@ import Welcome from './views/Welcome.vue'
 import memeText from "./views/memeText"
 import please from "./views/please"
 import alex from "@/views/alex";
-import ThreeJsTest from "@/views/ThreeJsTest";
 import test from "@/views/test";
 import lyrics from "@/views/lyrics";
 import price from "@/views/price";
@@ -29,11 +28,6 @@ export default new Router({
       path: '/please',
       name: 'please',
       component: please
-    },
-    {
-      path: '/three',
-      name: 'ThreeJsTest',
-      component: ThreeJsTest
     },
     {
       path: '/Alex',

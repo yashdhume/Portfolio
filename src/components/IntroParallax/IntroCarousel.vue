@@ -10,7 +10,7 @@
             elevation="0"
             touchless
             vertical
-            height="auto"
+            height="100"
             dark
     >
         <v-carousel-item
@@ -23,7 +23,7 @@
                     class="fill-height"
                     align="center"
                     justify="center"
-            ><h2 class="display-2">{{item}}</h2>
+            ><h2 class="display-2" style="color: white">{{item}}</h2>
 
             </v-row>
         </v-carousel-item>
